@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Computing - Ultimate Exam Guide & Past Papers</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b0b0f;
+            --sidebar-bg: #111118;
+            --card-bg: #161622;
+            --card-hover: #1d1d2f;
+            --text-color: #e2e8f0;
+            --heading-color: #ffd700;
+            --accent-color: #38bdf8;
+            --example-bg: rgba(79, 195, 247, 0.03);
+            --sidebar-width: 290px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Design */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding: 2rem 1rem;
+            border-right: 1px solid #1f1f2e;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar h2 {
+            color: var(--heading-color);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 2px solid #1f1f2e;
+            padding-bottom: 1rem;
+        }
+
+        .sidebar h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #475569;
+            margin: 1.5rem 0 0.5rem 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 0.3rem;
+        }
+
+        .sidebar ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            display: block;
+            padding: 0.7rem 0.8rem;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.9rem;
+        }
+
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background: rgba(255, 215, 0, 0.08);
+            color: var(--heading-color);
+            padding-left: 1.3rem;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 4rem 3rem;
+            width: calc(100% - var(--sidebar-width));
+            max-width: 1200px;
+        }
+
+        header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--heading-color);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        /* Container Blocks */
+        .section-block {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3.5rem;
+            border: 1px solid #232336;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        h2.section-title {
+            color: var(--heading-color);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #232336;
+            padding-bottom: 0.8rem;
+        }
+
+        p {
+            line-height: 1.8;
+            color: #cbd5e1;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Uniform Showcase Layout */
+        .showcase-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .showcase-tile {
+            background: #1b1b2a;
+            border: 1px solid #2a2a3f;
+            border-radius: 14px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase-tile::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: var(--accent-color);
+        }
+
+        /* Varied Accent Borders for Visual Breaks */
+        .tile-blue::before { background: #38bdf8; }
+        .tile-purple::before { background: #a855f7; }
+        .tile-green::before { background: #10b981; }
+        .tile-amber::before { background: #f59e0b; }
+        .tile-rose::before { background: #f43f5e; }
+
+        .tile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #28283d;
+            padding-bottom: 0.8rem;
+        }
+
+        .tile-badge {
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .tile-blue .tile-badge { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+        .tile-purple .tile-badge { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+        .tile-green .tile-badge { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+        .tile-amber .tile-badge { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+        .tile-rose .tile-badge { background: rgba(244, 63, 94, 0.15); color: #f43f5e; }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            background: #141421;
+            padding: 1.2rem;
+            border-radius: 8px;
+        }
+
+        .split-box h5 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .custom-example-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed #3e3e5c;
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .custom-example-box span {
+            font-size: 0.95rem;
+            color: #a7ffeb;
+            font-style: italic;
+        }
+
+        /* Q&A Component Styles */
+        .qa-card {
+            background: #12121f;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--heading-color);
+            border-top: 1px solid #232336;
+            border-right: 1px solid #232336;
+            border-bottom: 1px solid #232336;
+        }
+
+        .ans-highlight {
+            color: #a7ffeb;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .explanation-text {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            font-style: italic;
+            display: block;
+            margin-top: 0.4rem;
+        }
+
+        /* Data Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            background: #12121f;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #232336;
+        }
+
+        th {
+            background: #1e1e2f;
+            color: var(--heading-color);
+            font-weight: 600;
+        }
+
+        /* Footer Style */
+        footer {
+            text-align: center;
+            padding: 4rem 0 2rem 0;
+            border-top: 1px solid #232336;
+            margin-top: 5rem;
+            color: #64748b;
+        }
+
+        footer strong {
+            color: var(--heading-color);
+            letter-spacing: 0.5px;
+        }
+
+        .paper-tag {
+            background: #b45309;
+            color: #fff;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Premium Floating WhatsApp Button Styles */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.8rem 1.4rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5);
+            background: #20ba5a;
+        }
+
+        .whatsapp-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .whatsapp-icon {
+            font-size: 1.5rem;
+        }
+
+        .whatsapp-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 950px) {
+            body { flex-direction: column; }
+            .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid #1f1f2e; }
+            .main-content { margin-left: 0; width: 100%; padding: 2rem 1.5rem; }
+            .split-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                padding: 0.7rem 1.1rem;
+            }
+            .whatsapp-text {
+                font-size: 0.8rem;
+            }
+            .whatsapp-icon {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <h2><i class="fa-solid fa-cloud"></i> Cloud Hub</h2>
+        
+        <h3>Core Lectures</h3>
+        <ul>
+            <li><a href="#definition" class="active">1. Introduction & Needs</a></li>
+            <li><a href="#architecture">2. Cloud Architecture</a></li>
+            <li><a href="#service-models">3. Cloud Service Models</a></li>
+            <li><a href="#deployment-models">4. Deployment Models</a></li>
+            <li><a href="#benefits">5. Cloud Benefits</a></li>
+            <li><a href="#pros-cons">6. Advantages & Risks</a></li>
+            <li><a href="#azure-special">7. Microsoft Azure Focus</a></li>
+            <li><a href="#management-systems">8. Cloud Management</a></li>
+        </ul>
+
+        <h3>Past Papers Archive</h3>
+        <ul>
+            <li><a href="#paper-2025"><i class="fa-solid fa-file-signature"></i> May 2025 Exam</a></li>
+            <li><a href="#paper-2024"><i class="fa-solid fa-file-signature"></i> May 2024 Exam</a></li>
+            <li><a href="#paper-2021"><i class="fa-solid fa-file-signature"></i> June 2021 Exam</a></li>
+            <li><a href="#paper-undated"><i class="fa-solid fa-file-signature"></i> Undated Slip Answers</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <header>
+            <h1>Cloud Computing Complete Digital Guide</h1>
+            <p>Comprehensive structured learning notes and optimized past papers bank for students.</p>
+        </header>
+
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="definition" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-info-circle"></i> 1. Introduction to Cloud Computing</h2>
+            <div class="showcase-container">
+                <div class="showcase-tile tile-blue">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #38bdf8;"><i class="fa-solid fa-book-open"></i> Simple Overview</h3>
+                        <span class="tile-badge">Definition</span>
+                    </div>
+                    <p><strong>Cloud Computing</strong> means storing, managing, running, and accessing your heavy data payloads and software application frameworks securely over the absolute infrastructure of the internet. It fundamentally replaces the archaic process of saving and executing everything locally inside your computer's limited physical hard drive.</p>
+                </div>
+
+                <div class="showcase-tile tile-amber">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #f59e0b;"><i class="fa-solid fa-circle-question"></i> Why We Need Cloud Computing?</h3>
+                        <span class="tile-badge">Core Purpose</span>
+                    </div>
+                    <p>Before Cloud computing matured, enterprise businesses were bound to purchase expensive servers, configure complex on-premise cooling systems, and hire extensive network administration teams simply to maintain application uptimes. Cloud computing drops these operational friction points completely, empowering developers to distribute software globally within seconds without procuring a single piece of hardware.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: CLOUD ARCHITECTURE -->
+        <section id="architecture" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-sitemap"></i> 2. Main Components of Cloud Architecture</h2>
+            <p>Cloud architecture layouts establish the execution models and logical pipelines that organize task execution cleanly between localized interfaces and centralized server hubs:</p>
+            
+            <div class="showcase-container">
+                <div class="showcase-tile tile-blue">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #38bdf8;"><i class="fa-solid fa-laptop"></i> Front-End Device</h3>
+                        <span class="tile-badge">User Interface Layer</span>
+                    </div>
+                    <p>The visible point of interactions. Consists of client-side web browsers, native desktop terminals, or mobile client applications that users interact with directly to initiate network cloud commands.</p>
+                </div>
+
+                <div class="showcase-tile tile-purple">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #a855f7;"><i class="fa-solid fa-database"></i> Back-End Platform</h3>
+                        <span class="tile-badge">Central Datacenter Layer</span>
+                    </div>
+                    <p>The core computational engine. Encompasses hyper-scale physical servers, high-throughput virtualization nodes, secure database architectures, and logic management software layers.</p>
+                </div>
+
+                <div class="showcase-tile tile-green">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #10b981;"><i class="fa-solid fa-network-wired"></i> The Network</h3>
+                        <span class="tile-badge">Operational Connectivity</span>
+                    </div>
+                    <p>The absolute communication bridge. Utilizes advanced, high-speed networking protocols and secure encrypted routing pathways to route user terminal payloads straight to centralized data center arrays.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CLOUD SERVICE MODELS -->
+        <section id="service-models" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-cubes"></i> 3. Cloud Service Models (The "How")</h2>
+            <div class="showcase-container">
+                <div class="showcase-tile tile-green">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #10b981;"><i class="fa-solid fa-window-maximize"></i> SaaS (Software as a Service)</h3>
+                        <span class="tile-badge">Ready Software Model</span>
+                    </div>
+                    <p>Fully managed software architectures served straight through web URLs. No localized environment installations or software update configurations are ever needed from the end-user.</p>
+                    <div class="custom-example-box"><span><strong>Examples:</strong> Gmail portals, Netflix streams, Microsoft Office 365, Google Drive buckets.</span></div>
+                </div>
+
+                <div class="showcase-tile tile-purple">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #a855f7;"><i class="fa-solid fa-code-branch"></i> PaaS (Platform as a Service)</h3>
+                        <span class="tile-badge">Developer Compilation Model</span>
+                    </div>
+                    <p>Provides managed cloud runtimes and integrated backend developer tools, freeing software developers to write and push application source codes safely without dealing with system architecture updates.</p>
+                    <div class="custom-example-box"><span><strong>Examples:</strong> Google App Engine clusters, AWS Elastic Beanstalk configurations, Heroku nodes.</span></div>
+                </div>
+
+                <div class="showcase-tile tile-blue">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #38bdf8;"><i class="fa-solid fa-hdd"></i> IaaS (Infrastructure as a Service)</h3>
+                        <span class="tile-badge">Raw Infrastructure Model</span>
+                    </div>
+                    <p>Renting fundamental raw computing blocks over internet grids. Clients receive unconfigured virtualization layers, complete processing powers, and blank block storages.</p>
+                    <div class="custom-example-box"><span><strong>Examples:</strong> Amazon EC2 instances, DigitalOcean droplets, Microsoft Azure virtual server modules.</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: DEPLOYMENT MODELS -->
+        <section id="deployment-models" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-cloud-sun"></i> 4. Cloud Deployment Models (The "Where")</h2>
+            <div class="showcase-container">
+                <div class="showcase-tile tile-blue">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #38bdf8;"><i class="fa-solid fa-users"></i> Public Cloud Architecture</h3>
+                        <span class="tile-badge">Multi-Tenant Setup</span>
+                    </div>
+                    <p>Infrastructure owned, operated, and maintained by third-party market providers. Uses a shared server concept called <strong>Multi-tenancy</strong>, offering exceptional scaling flexibility and lower pricing options.</p>
+                </div>
+
+                <div class="showcase-tile tile-rose">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #f43f5e;"><i class="fa-solid fa-lock"></i> Private Cloud Architecture</h3>
+                        <span class="tile-badge">Single-Tenant Setup</span>
+                    </div>
+                    <p>Computing architecture built explicitly for one company. Features custom high-security firewalls and dedicated hardware pipelines, giving networks maximum data protection controls.</p>
+                </div>
+
+                <div class="showcase-tile tile-purple">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #a855f7;"><i class="fa-solid fa-shuffle"></i> Hybrid Cloud Architecture</h3>
+                        <span class="tile-badge">Orchestrated Solution</span>
+                    </div>
+                    <p>A smart, blended ecosystem. Allows companies to lock down high-security profile details inside localized private clouds while offloading general customer traffic pipelines out to public clouds.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CLOUD BENEFITS -->
+        <section id="benefits" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> 5. Primary Strategic Benefits</h2>
+            <div class="showcase-container">
+                <div class="showcase-tile tile-amber">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #f59e0b;"><i class="fa-solid fa-arrow-up-right-dots"></i> Scalability</h3>
+                        <span class="tile-badge">Elastic Scaling</span>
+                    </div>
+                    <p>The elastic power to dynamically expand or contract resource assets (RAM capacity, storage allocations, or computing limits) to cleanly match live traffic demands.</p>
+                </div>
+
+                <div class="showcase-tile tile-green">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #10b981;"><i class="fa-solid fa-clock"></i> Availability</h3>
+                        <span class="tile-badge">High Availability</span>
+                    </div>
+                    <p>Ensures user files and backend infrastructure databases stay online and working, giving end-users global access round-the-clock without operational system lockouts.</p>
+                </div>
+
+                <div class="showcase-tile tile-blue">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #38bdf8;"><i class="fa-solid fa-shield-heart"></i> Reliability</h3>
+                        <span class="tile-badge">Fault Tolerance</span>
+                    </div>
+                    <p>The continuous, steady operation of systems under load. Uses automated cross-region backup scripts to shield critical assets from sudden corruption or deletion risks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: ADVANTAGES & RISKS -->
+        <section id="pros-cons" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-balance-scale"></i> 6. Advantages, Disadvantages & Core Risks</h2>
+            <div class="showcase-container">
+                <div class="showcase-tile tile-green">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #10b981;"><i class="fa-solid fa-circle-check"></i> Advantages (Faide)</h3>
+                        <span class="tile-badge">Strategic Gains</span>
+                    </div>
+                    <p>Removes high upfront hardware costs by switching networks onto pay-per-use lines. Provides remote teams instant file access anywhere globally, while automatic cloud platform updates keep data lines fully optimized.</p>
+                </div>
+
+                <div class="showcase-tile tile-rose">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #f43f5e;"><i class="fa-solid fa-circle-xmark"></i> Disadvantages & Risks (Nuqsanat)</h3>
+                        <span class="tile-badge">Operational Pain Points</span>
+                    </div>
+                    <p>Creates a total dependency on local internet health. Yields less raw command over physical asset settings, brings risks of complex cloud data egress fees, and carries potential vendor lock-in challenges when moving large databases between platforms like AWS and Azure.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: MICROSOFT AZURE CASE STUDY -->
+        <section id="azure-special" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-shield-halved"></i> 7. Microsoft Azure Service Case Study</h2>
+            <p>Microsoft Azure partitions enterprise-grade cloud management into clean layers across three core execution methodologies:</p>
+
+            <div class="showcase-container">
+                <!-- IaaS Tile -->
+                <div class="showcase-tile tile-blue">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #38bdf8;"><i class="fa-solid fa-server"></i> 1. Azure as IaaS</h3>
+                        <span class="tile-badge">Infrastructure as a Service</span>
+                    </div>
+                    <p><strong>Core Concept:</strong> Renting raw hardware elements like processing power, storage spaces, and virtual networks over a cloud utility subscription model.</p>
+                    <div class="split-grid">
+                        <div class="split-box">
+                            <h5 style="color: #ffd700;"><i class="fa-solid fa-user-gear"></i> You Manage:</h5>
+                            <p style="font-size: 0.95rem; margin: 0; color: #cbd5e1;">Operating Systems, Custom Web Application Deployments, Patches, and Framework Data sets.</p>
+                        </div>
+                        <div class="split-box">
+                            <h5 style="color: #38bdf8;"><i class="fa-solid fa-building-shield"></i> Azure Manages:</h5>
+                            <p style="font-size: 0.95rem; margin: 0; color: #cbd5e1;">Physical Servers, Datacenter Power grids, Cooling Arrays, and Core Fiber Infrastructure lines.</p>
+                        </div>
+                    </div>
+                    <div class="custom-example-box">
+                        <strong style="font-size: 0.9rem; color: #94a3b8;">Production Enterprise Implementations:</strong>
+                        <span>Azure Virtual Machines (VMs), Azure Blob Storage, Azure Virtual Networks (VNets).</span>
+                    </div>
+                </div>
+
+                <!-- PaaS Tile -->
+                <div class="showcase-tile tile-purple">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #a855f7;"><i class="fa-solid fa-code"></i> 2. Azure as PaaS</h3>
+                        <span class="tile-badge">Platform as a Service</span>
+                    </div>
+                    <p><strong>Core Concept:</strong> Managed virtual spaces tailored for programmers to test and launch clean web app codes smoothly without managing hardware.</p>
+                    <div class="split-grid">
+                        <div class="split-box">
+                            <h5 style="color: #ffd700;"><i class="fa-solid fa-user-gear"></i> You Manage:</h5>
+                            <p style="font-size: 0.95rem; margin: 0; color: #cbd5e1;">Application Code Files, Connected APIs, and Database Schemas.</p>
+                        </div>
+                        <div class="split-box">
+                            <h5 style="color: #a855f7;"><i class="fa-solid fa-building-shield"></i> Azure Manages:</h5>
+                            <p style="font-size: 0.95rem; margin: 0; color: #cbd5e1;">Underlying Server Hardening, Auto-OS Lifecycle Updates, Execution Runtimes, and Middleware Systems.</p>
+                        </div>
+                    </div>
+                    <div class="custom-example-box">
+                        <strong style="font-size: 0.9rem; color: #94a3b8;">Production Enterprise Implementations:</strong>
+                        <span>Azure App Service, Azure SQL Managed Databases, Azure Functions (Serverless).</span>
+                    </div>
+                </div>
+
+                <!-- SaaS Tile -->
+                <div class="showcase-tile tile-green">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #10b981;"><i class="fa-solid fa-window-restore"></i> 3. Azure as SaaS</h3>
+                        <span class="tile-badge">Software as a Service</span>
+                    </div>
+                    <p><strong>Core Concept:</strong> Complete cloud applications managed and updated entirely by the provider, ready to use via web browsers or client logins.</p>
+                    <div class="split-grid">
+                        <div class="split-box">
+                            <h5 style="color: #ffd700;"><i class="fa-solid fa-user-gear"></i> You Manage:</h5>
+                            <p style="font-size: 0.95rem; margin: 0; color: #cbd5e1;">Personalized interface settings, user accounts setup, and daily profile adjustments.</p>
+                        </div>
+                        <div class="split-box">
+                            <h5 style="color: #10b981;"><i class="fa-solid fa-building-shield"></i> Azure Manages:</h5>
+                            <p style="font-size: 0.95rem; margin: 0; color: #cbd5e1;">The full layout framework (Physical Nodes, OS Integrity, App Source Repositories, and Security Configurations).</p>
+                        </div>
+                    </div>
+                    <div class="custom-example-box">
+                        <strong style="font-size: 0.9rem; color: #94a3b8;">Production Enterprise Implementations:</strong>
+                        <span>Microsoft 365, Microsoft Teams Connect portal, Outlook Live mail clients.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: CLOUD MANAGEMENT SYSTEMS -->
+        <section id="management-systems" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-sliders"></i> 8. Enterprise Cloud Management Infrastructure</h2>
+            <div class="showcase-container">
+                <div class="showcase-tile tile-blue">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #38bdf8;"><i class="fa-solid fa-terminal"></i> Remote Administration System</h3>
+                        <span class="tile-badge">Access Management Control</span>
+                    </div>
+                    <p>Gives administrators secure, distance-based tools (like Web Consoles, Command Line Interfaces, or secure APIs) to start, monitor, or stop cloud resources safely without physical server access.</p>
+                </div>
+
+                <div class="showcase-tile tile-purple">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #a855f7;"><i class="fa-solid fa-brain"></i> Resource Management System</h3>
+                        <span class="tile-badge">VIM Allocations</span>
+                    </div>
+                    <p>The control brain of the cloud framework. Uses a Virtual Infrastructure Manager (VIM) to dynamically allocate CPUs, balance network loads, and handle auto-scaling steps across server racks.</p>
+                </div>
+
+                <div class="showcase-tile tile-amber">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #f59e0b;"><i class="fa-solid fa-file-contract"></i> SLA Management</h3>
+                        <span class="tile-badge">Contract Tracking</span>
+                    </div>
+                    <p>A legally binding service level agreement contract guaranteeing high uptime metrics (like 99.99% system availability). The tracker monitors real-time health to log penalties if performance drops.</p>
+                </div>
+
+                <div class="showcase-tile tile-green">
+                    <div class="tile-header">
+                        <h3 style="margin: 0; color: #10b981;"><i class="fa-solid fa-file-invoice-dollar"></i> Billing Management System</h3>
+                        <span class="tile-badge">Telemetry Tracking</span>
+                    </div>
+                    <p>An automated tracking matrix built to watch resource use down to the second. It transforms low-level server usage metrics into error-free monthly invoices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAST PAPERS ARCHIVE -->
+        
+        <!-- 2025 -->
+        <section id="paper-2025" class="section-block" style="border-top: 4px solid var(--heading-color);">
+            <span class="paper-tag">Past Paper Bank</span>
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Past Paper: May 2025</h2>
+            <p style="color: #94a3b8;">Course Code: <strong>Cloud Computing (ITC-607)</strong> — BS (IT) 7th Semester</p>
+            
+            <h3 style="color: var(--accent-color); margin: 1.5rem 0 1rem 0;">Section A: Objective Answers</h3>
+            <div class="qa-card">
+                <p><strong>Q1. Which of the following best describes Microsoft Azure?</strong></p>
+                <div class="ans-highlight"><i class="fa-solid fa-circle-check"></i> c. A cloud computing platform and service provider</div>
+            </div>
+            <div class="qa-card">
+                <p><strong>Q2. What is the primary benefit of using cloud computing platforms?</strong></p>
+                <div class="ans-highlight"><i class="fa-solid fa-circle-check"></i> a. On-demand, shared, configurable access to computing resources</div>
+            </div>
+            <div class="qa-card">
+                <p><strong>Q3. Which of the following is an example of Infrastructure-as-a-Service (IaaS)?</strong></p>
+                <div class="ans-highlight"><i class="fa-solid fa-circle-check"></i> b. Virtual Machines</div>
+            </div>
+            <div class="qa-card">
+                <p><strong>Q4. Which service is used for storing unstructured data like images or videos?</strong></p>
+                <div class="ans-highlight"><i class="fa-solid fa-circle-check"></i> c. Azure Blob Storage</div>
+            </div>
+
+            <h3 style="color: var(--accent-color); margin: 1.5rem 0 1rem 0;">Section B: Descriptive Long Solutions</h3>
+            <div class="qa-card">
+                <p><strong>Q1: Key features and NIST characteristics of cloud computing & hands-on reflection.</strong></p>
+                <p style="margin-top:0.5rem; font-size: 0.95rem; color:#cbd5e1;"><strong>NIST Standards:</strong> On-demand Self-service, Broad Network Access, Resource Pooling (Multi-tenancy), Rapid Elasticity (Instant Scale changes), and Measured Service tracks.</p>
+                <span class="explanation-text">Lab Application: Instantly deploying active VMs using cloud portals highlights these traits by delivering servers immediately without manual physical infrastructure work.</span>
+            </div>
+            <div class="qa-card">
+                <p><strong>Q2: Deploying a web application using Azure App Service.</strong></p>
+                <p style="margin-top:0.5rem; font-size: 0.95rem; color:#cbd5e1;"><strong>Portal Pathway:</strong> Select Web App -> Define Project Subscriptions, Resource Groups, unique sub-domains, and platform runtimes (.NET / Node / Python) -> Choose OS and Pricing Tier -> Click Create.</p>
+                <span class="explanation-text">VS Code Pathway: Link Azure extension account workspace -> Right click deployment directories -> Initiate command palette pipeline blocks to target Web App targets.</span>
+            </div>
+        </section>
+
+        <!-- 2024 -->
+        <section id="paper-2024" class="section-block">
+            <span class="paper-tag">Past Paper Bank</span>
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Past Paper: May 2024</h2>
+            
+            <div class="qa-card">
+                <p><strong>Q1. There are ________ essential characteristics of cloud computing according to NIST models.</strong></p>
+                <div class="ans-highlight"><i class="fa-solid fa-circle-check"></i> Answer: b. 5</div>
+            </div>
+            <div class="qa-card">
+                <p><strong>Q2. Cloud computing is a model for enabling convenient, on-demand network access to shared resources.</strong></p>
+                <div class="ans-highlight"><i class="fa-solid fa-circle-check"></i> Answer: a. Ubiquitous</div>
+            </div>
+            <div class="qa-card">
+                <p><strong>Q3. Amazon Web Service is considered the ________ of modern cloud environments.</strong></p>
+                <div class="ans-highlight"><i class="fa-solid fa-circle-check"></i> Answer: b. Pioneer</div>
+            </div>
+        </section>
+
+        <!-- 2021 -->
+        <section id="paper-2021" class="section-block">
+            <span class="paper-tag">Past Paper Bank</span>
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Past Paper: June 2021</h2>
+            
+            <div class="qa-card">
+                <p><strong>Q1: Outline Microsoft Azure Cloud Platform and its main structured components.</strong></p>
+                <p style="margin-top:0.5rem; font-size: 0.95rem; color:#cbd5e1;">Azure divides core enterprise cloud services into distinct system categories:</p>
+                <p style="font-size: 0.95rem; color: #94a3b8; margin-top: 0.3rem;">• Compute: Azure Virtual Machines, Azure App Services, Azure serverless Functions.<br>• Storage: Azure Blob containers, Unconfigured Disk allocations, Azure File shares.<br>• Network: Isolation VNets, Load Balancers, secure high-speed ExpressRoute channels.<br>• Database: Fully managed Azure SQL servers and high-scale Cosmos DB engines.</p>
+            </div>
+        </section>
+
+        <!-- UNDATED SLIP -->
+        <section id="paper-undated" class="section-block">
+            <span class="paper-tag">Past Paper Bank</span>
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Past Paper: Undated Slip</h2>
+            <p>Comparative Matrix mapping traditional bare-metal setups against automated internet cloud nodes:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Architecture Feature</th>
+                        <th>On-Premise Infrastructure</th>
+                        <th>Cloud-Based Infrastructure</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Administration</strong></td>
+                        <td>Managed entirely by internal local IT engineering staff.</td>
+                        <td>Shared responsibility model; cloud host holds physical layers.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Resource Controls</strong></td>
+                        <td>High manual upkeep (procurement delays, raw physical cabling setups).</td>
+                        <td>Automated elastic scaling adjustments via software panels or CLI triggers.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Capital Allocation</strong></td>
+                        <td>Heavy CapEx (Massive upfront structural server room funding).</td>
+                        <td>OpEx pricing model structures (Flexible pay-as-you-go metrics).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- UPDATED FOOTER WITH CUSTOM DEVELOPER TAGS -->
+        <footer>
+            <p>&copy; 2026 Cloud Computing Study Portal. All Rights Reserved.</p>
+            <p style="margin-top: 0.6rem; letter-spacing: 1px; font-size: 0.85rem; text-transform: uppercase;">
+                Designed & Developed by: <strong style="color: var(--heading-color);">sajiskani</strong>
+            </p>
+        </footer>
+    </main>
+
+    <!-- PREMIUM FLOATING WHATSAPP INTERACTION BUTTON -->
+    <a href="https://wa.me/923010249923?text=Hello%20sajiskani,%20I%20want%20to%20contact%20for%20cloud%20computing%20notes%20and%20pastpapers." 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener noreferrer">
+        <div class="whatsapp-content">
+            <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
+            <span class="whatsapp-text">Contact for notes and pastpapers</span>
+        </div>
+    </a>
+
+    <!-- ACTIVE LINK SYNC SCRIPT -->
+    <script>
+        const links = document.querySelectorAll('.sidebar ul li a');
+        const sections = document.querySelectorAll('.section-block');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 220)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            links.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
